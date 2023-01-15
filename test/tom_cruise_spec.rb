@@ -3,9 +3,6 @@
 require_relative 'test_helper'
 
 class Darren < TomCruise
-  def initialize(save_me: nil)
-  end
-
   def hi
     puts 'hihi'
   end
@@ -27,6 +24,14 @@ describe TomCruise do
   describe 'darren messing around' do
     it 'should comply' do
       darren = Darren.new
+
+      darren.hi
+      darren.bye
+      darren.jump(1)
+    end
+
+    it 'should let me attach things' do
+      darren = Darren.new(-> { puts 'nope' })
 
       darren.hi
       darren.bye

@@ -3,6 +3,10 @@
 require_relative 'tom_cruise/version'
 
 class TomCruise # rubocop:disable Style/Documentation
+  def initialize(a_lambda = nil)
+    @lambdas = [a_lambda].compact
+  end
+
   def self.method_added(name)
     super
 
@@ -27,6 +31,7 @@ class TomCruise # rubocop:disable Style/Documentation
   end
 
   def method_missing(name, *args, **kwargs)
+    @lambdas.each(&:call)
     self.class.things[name].bind(self).call(*args, **kwargs)
   end
 
