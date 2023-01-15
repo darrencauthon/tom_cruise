@@ -4,15 +4,15 @@ require_relative 'test_helper'
 
 class Darren < TomCruise
   def hi
-    puts 'hihi'
+    'a hi'
   end
 
   def bye
-    puts 'byebye'
+    'a bye'
   end
 
   def jump(times)
-    puts "jumping #{times} time#{times == 1 ? "" : "s"}"
+    "jumping #{times} time#{times == 1 ? "" : "s"}"
   end
 end
 
@@ -22,12 +22,14 @@ describe TomCruise do
   end
 
   describe 'darren messing around' do
+    let(:darren) { Darren.new }
     it 'should comply' do
       darren = Darren.new
 
-      darren.hi
-      darren.bye
-      darren.jump(1)
+      _(darren.hi).must_equal 'a hi'
+      _(darren.bye).must_equal 'a bye'
+      _(darren.jump(1)).must_equal 'jumping 1 time'
+      _(darren.jump(2)).must_equal 'jumping 2 times'
     end
 
     it 'should let me attach things' do
