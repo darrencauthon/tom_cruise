@@ -26,8 +26,4 @@ class TomCruise # rubocop:disable Style/Documentation
   class << self
     attr_reader :things
   end
-
-  def under(name)
-    self.class.things[name].bind(self).call
-  end
 end
