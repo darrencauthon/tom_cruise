@@ -20,7 +20,6 @@ describe TomCruise do
     it 'should comply' do
       darren = Darren.new
 
-      darren.under(:hi)
       darren.hi
     end
   end
