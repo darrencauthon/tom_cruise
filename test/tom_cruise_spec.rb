@@ -33,11 +33,11 @@ describe TomCruise do
     end
 
     describe 'attaching lambdas' do
-      it 'should let me attach lambdas' do
-        list = []
+      let(:list) { [] }
 
-        darren = Darren.new(-> { list << Object.new })
+      let(:darren) { Darren.new(-> { list << Object.new }) }
 
+      it 'should let me attach one lambda' do
         darren.hi
         darren.bye
         darren.jump(1)
