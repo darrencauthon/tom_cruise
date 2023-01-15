@@ -13,6 +13,10 @@ class Darren < TomCruise
   def bye
     puts 'byebye'
   end
+
+  def jump(times)
+    puts "jumping #{times} time#{times == 1 ? "" : "s"}"
+  end
 end
 
 describe TomCruise do
@@ -26,6 +30,7 @@ describe TomCruise do
 
       darren.hi
       darren.bye
+      darren.jump(1)
     end
   end
 end

@@ -15,11 +15,13 @@ class TomCruise # rubocop:disable Style/Documentation
     puts "Added #{name}"
     @things ||= {}
 
-    @things[name] = instance_method(name)
+    the_method = instance_method(name)
+
+    @things[name] = the_method
 
     undef_method name
 
-    define_method name, proc { puts name }
+    define_method name, proc { |*a, **b| puts name }
   end
 
   class << self
