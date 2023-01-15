@@ -56,7 +56,7 @@ describe TomCruise do
         darren.bye
         darren.jump(1)
 
-        _(list).must_equal [:hi, :bye, :jump]
+        _(list).must_equal %i[hi bye jump]
       end
     end
   end
