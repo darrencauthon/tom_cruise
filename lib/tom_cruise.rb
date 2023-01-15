@@ -16,11 +16,10 @@ class TomCruise # rubocop:disable Style/Documentation
     @things ||= {}
 
     @things[name] = instance_method(name)
-    puts @things.inspect
 
     undef_method name
 
-    define_method name, proc { puts 'ok' }
+    define_method name, proc { puts name }
   end
 
   class << self

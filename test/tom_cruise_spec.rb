@@ -7,7 +7,11 @@ class Darren < TomCruise
   end
 
   def hi
-    puts 'hi'
+    puts 'hihi'
+  end
+
+  def bye
+    puts 'byebye'
   end
 end
 
@@ -21,6 +25,7 @@ describe TomCruise do
       darren = Darren.new
 
       darren.hi
+      darren.bye
     end
   end
 end
