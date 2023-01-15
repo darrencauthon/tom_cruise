@@ -3,7 +3,7 @@
 require 'test_helper'
 
 describe TomCruise do
-  it 'should be true' do
-    _(1).must_equal 1
+  it 'should be creatable' do
+    _(TomCruise.new).wont_be_nil
   end
 end

@@ -2,7 +2,6 @@
 
 require_relative 'tom_cruise/version'
 
-module TomCruise
-  class Error < StandardError; end
-  # Your code goes here...
+class TomCruise
+
 end
