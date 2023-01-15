@@ -32,7 +32,7 @@ describe TomCruise do
       _(darren.jump(2)).must_equal 'jumping 2 times'
     end
 
-    describe 'attaching lambdas' do
+    describe 'attaching one lambda' do
       let(:list) { [] }
 
       let(:darren) { Darren.new(-> { list << Object.new }) }
