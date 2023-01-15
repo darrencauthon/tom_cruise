@@ -16,7 +16,6 @@ class TomCruise # rubocop:disable Style/Documentation
     return if self.name == 'TomCruise'
     return if @things[name]
 
-    puts "Added #{name}"
     @things ||= {}
 
     the_method = instance_method(name)
