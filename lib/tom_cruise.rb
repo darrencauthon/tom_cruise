@@ -6,8 +6,11 @@ class TomCruise # rubocop:disable Style/Documentation
   def self.method_added(name)
     super
 
+    @things ||= {}
+
     return if ['initialize'].include?(name.to_s)
     return if self.name == 'TomCruise'
+    return if @things[name]
 
     puts "Added #{name}"
     @things ||= {}
@@ -16,6 +19,8 @@ class TomCruise # rubocop:disable Style/Documentation
     puts @things.inspect
 
     undef_method name
+
+    define_method name, proc { puts 'ok' }
   end
 
   class << self
