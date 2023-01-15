@@ -45,5 +45,19 @@ describe TomCruise do
         _(list.count).must_equal 3
       end
     end
+
+    describe 'getting the method names' do
+      let(:list) { [] }
+
+      let(:darren) { Darren.new(->(method_name:) { list << method_name }) }
+
+      it 'should let me attach one lambda' do
+        darren.hi
+        darren.bye
+        darren.jump(1)
+
+        _(list).must_equal [:hi, :bye, :jump]
+      end
+    end
   end
 end
