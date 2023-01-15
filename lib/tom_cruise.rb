@@ -20,8 +20,14 @@ class TomCruise # rubocop:disable Style/Documentation
     @things[name] = the_method
 
     undef_method name
+  end
 
-    define_method name, proc { |*a, **b| puts name }
+  def respond_to_missing?(name)
+    self.class.things[name]
+  end
+
+  def method_missing(name, *args, **kwargs)
+    self.class.things[name].bind(self).call(*args, **kwargs)
   end
 
   class << self
