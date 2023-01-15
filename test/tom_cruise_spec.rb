@@ -32,12 +32,18 @@ describe TomCruise do
       _(darren.jump(2)).must_equal 'jumping 2 times'
     end
 
-    it 'should let me attach things' do
-      darren = Darren.new(-> { puts 'nope' })
+    describe 'attaching lambdas' do
+      it 'should let me attach lambdas' do
+        list = []
 
-      darren.hi
-      darren.bye
-      darren.jump(1)
+        darren = Darren.new(-> { list << Object.new })
+
+        darren.hi
+        darren.bye
+        darren.jump(1)
+
+        _(list.count).must_equal 3
+      end
     end
   end
 end
