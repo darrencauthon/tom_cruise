@@ -6,7 +6,7 @@ class TomCruise # rubocop:disable Style/Documentation
   def self.method_added(name)
     super
 
-    return if ['initialize'].include?(name)
+    return if ['initialize'].include?(name.to_s)
     return if self.name == 'TomCruise'
 
     puts "Added #{name}"
