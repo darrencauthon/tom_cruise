@@ -10,6 +10,10 @@ class TomCruise # rubocop:disable Style/Documentation
     return if self.name == 'TomCruise'
 
     puts "Added #{name}"
+    @things ||= {}
+
+    @things[name] = instance_method(name)
+    puts @things.inspect
   end
 
   def under
