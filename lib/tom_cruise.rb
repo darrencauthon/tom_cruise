@@ -14,8 +14,15 @@ class TomCruise # rubocop:disable Style/Documentation
 
     @things[name] = instance_method(name)
     puts @things.inspect
+
+    undef_method name
   end
 
-  def under
+  class << self
+    attr_reader :things
+  end
+
+  def under(name)
+    self.class.things[name].bind(self).call
   end
 end

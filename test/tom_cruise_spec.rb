@@ -19,6 +19,8 @@ describe TomCruise do
   describe 'darren messing around' do
     it 'should comply' do
       darren = Darren.new
+
+      darren.under(:hi)
       darren.hi
     end
   end
