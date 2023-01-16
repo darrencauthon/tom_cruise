@@ -32,7 +32,7 @@ class TomCruise # rubocop:disable Style/Documentation
   def method_missing(name, *args, **kwargs)
     @lambdas
       .select { |x| x.parameters.none? }
-      .each { |x| x.call }
+      .each(&:call)
 
     @lambdas
       .select { |x| x.parameters.map(&:first).map(&:to_s).any? { |y| y.start_with?('key') } }
