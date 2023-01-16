@@ -29,7 +29,7 @@ class TomCruise # rubocop:disable Style/Documentation
     self.class.things[name]
   end
 
-  def method_missing(name, *args, **kwargs)
+  def method_missing(name, *args, **kwargs) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     @lambdas
       .select { |x| x.parameters.none? }
       .each(&:call)
