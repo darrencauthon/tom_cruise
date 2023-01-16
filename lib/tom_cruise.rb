@@ -38,7 +38,7 @@ class TomCruise # rubocop:disable Style/Documentation
       .select { |x| x.parameters.map(&:first).map(&:to_s).any? { |y| y.start_with?('key') } }
       .each do |lamb|
         arguments_to_use = lamb.parameters.map { |x| x[1] }
-        lamb_args = { method_name: name, args: args }
+        lamb_args = { method_name: name, args: args, kwargs: kwargs }
                     .select { |k, _| arguments_to_use.include?(k) }
         lamb.call(**lamb_args)
       end

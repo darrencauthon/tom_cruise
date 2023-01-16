@@ -14,6 +14,10 @@ class Darren < TomCruise
   def jump(times)
     "jumping #{times} time#{times == 1 ? "" : "s"}"
   end
+
+  def expound(facta:, factb:)
+    "facta: #{facta}, factb: #{factb}"
+  end
 end
 
 describe TomCruise do
@@ -69,6 +73,18 @@ describe TomCruise do
         darren.jump(1)
 
         _(list).must_equal [[1]]
+      end
+    end
+
+    describe 'getting the kwargs' do
+      let(:list) { [] }
+
+      let(:darren) { Darren.new(->(kwargs:) { list << kwargs }) }
+
+      it 'should let me attach one lambda' do
+        darren.expound(facta: '1+1=2', factb: '2+2=4')
+
+        _(list).must_equal [{ facta: '1+1=2', factb: '2+2=4' }]
       end
     end
   end
