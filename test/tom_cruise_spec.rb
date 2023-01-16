@@ -59,5 +59,17 @@ describe TomCruise do
         _(list).must_equal %i[hi bye jump]
       end
     end
+
+    describe 'getting the args' do
+      let(:list) { [] }
+
+      let(:darren) { Darren.new(->(args:) { list << args }) }
+
+      it 'should let me attach one lambda' do
+        darren.jump(1)
+
+        _(list).must_equal [[1]]
+      end
+    end
   end
 end

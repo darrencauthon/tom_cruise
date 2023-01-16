@@ -32,11 +32,16 @@ class TomCruise # rubocop:disable Style/Documentation
   def method_missing(name, *args, **kwargs)
     @lambdas
       .select { |x| x.parameters.none? }
-      .each(&:call)
+      .each { |x| x.call }
 
     @lambdas
       .select { |x| x.parameters.map(&:first).map(&:to_s).any? { |y| y.start_with?('key') } }
-      .each { |x| x.call(method_name: name) }
+      .each do |lamb|
+        arguments_to_use = lamb.parameters.map { |x| x[1] }
+        data = { method_name: name, args: args }
+        lamb_args = arguments_to_use.to_h { |x| [x, data[x]] }
+        lamb.call(**lamb_args)
+      end
 
     self.class.things[name].bind(self).call(*args, **kwargs)
   end
